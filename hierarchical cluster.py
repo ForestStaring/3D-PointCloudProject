@@ -40,12 +40,12 @@ eigen_values, eigen_vectors = np.linalg.eigh(cov)
 growth_direction = eigen_vectors[:, 2]  # 取最小的特征值对应的特征向量作为生长方向
 
 # 分层聚类
-clustering = AgglomerativeClustering(n_clusters=3).fit(points)
+clustering = AgglomerativeClustering(n_clusters=5).fit(points)
 
 # 可视化聚类结果
-colors = [[1, 0, 0], [0, 1, 0], [0, 0, 1]]  # 定义三种颜色
+colors = [1, 0, 0], [0, 1, 0], [0, 0, 1],[0, 1, 1], [1, 0, 1] # 定义三种颜色
 color_arr = np.zeros_like(points)
-for i in range(3):
+for i in range(0,5):
     color_arr[clustering.labels_ == i] = colors[i]
 pcd.colors = o3d.utility.Vector3dVector(color_arr)
 
